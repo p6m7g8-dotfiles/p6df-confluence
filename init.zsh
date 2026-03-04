@@ -43,6 +43,40 @@ p6df::modules::confluence::aliases::init() {
 ######################################################################
 #<
 #
+# Function: str str = p6df::modules::confluence::prompt::mod()
+#
+#  Returns:
+#	str - str
+#
+#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
+#>
+######################################################################
+p6df::modules::confluence::prompt::mod() {
+  local str=""
+  local profile="${P6_DFZ_PROFILE_CONFLUENCE:-}"
+  local site="${CONFLUENCE_DOMAIN:-${ATLASSIAN_SITE:-}}"
+  local email="${CONFLUENCE_EMAIL:-${ATLASSIAN_EMAIL:-}}"
+  local token="${CONFLUENCE_API_TOKEN:-${ATLASSIAN_API_TOKEN:-}}"
+
+  if p6_string_blank_NOT "$profile"; then
+    str="confluence:\t  ${profile}:"
+    if p6_string_blank_NOT "$site"; then
+      str=$(p6_string_append "$str" "$site" " ")
+    fi
+    if p6_string_blank_NOT "$email"; then
+      str=$(p6_string_append "$str" "$email" "/")
+    fi
+    if p6_string_blank_NOT "$token"; then
+      str=$(p6_string_append "$str" "api" "/")
+    fi
+  fi
+
+  p6_return_str "$str"
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::confluence::profile::on(profile, env_or_site, [email], [token])
 #
 #  Args:
