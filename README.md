@@ -16,7 +16,7 @@ Install and configure Confluence CLI for shell and Codex usage.
 - `p6df::modules::confluence::deps()`
 - `p6df::modules::confluence::langs()`
 - `p6df::modules::confluence::profile::off()`
-- `p6df::modules::confluence::profile::on(profile, site, email, token)`
+- `p6df::modules::confluence::profile::on(profile, env_or_site, [email], [token])`
 
 ## ENV
 
