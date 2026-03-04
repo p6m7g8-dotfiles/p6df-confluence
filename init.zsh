@@ -43,22 +43,30 @@ p6df::modules::confluence::aliases::init() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::confluence::profile::on(profile, site, email, token)
+# Function: p6df::modules::confluence::profile::on(profile, env_or_site, [email], [token])
 #
 #  Args:
 #	profile -
-#	site -
-#	email -
-#	token -
+#	env_or_site -
+#	OPTIONAL email -
+#	OPTIONAL token -
 #
 #  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
 #>
 ######################################################################
 p6df::modules::confluence::profile::on() {
   local profile="$1"
-  local site="$2"
-  local email="$3"
-  local token="$4"
+  local env_or_site="$2"
+  local email="${3:-}"
+  local token="${4:-}"
+
+  local site="$env_or_site"
+  if [ "$#" -eq 2 ]; then
+    p6_run_code "$env_or_site"
+    site="${CONFLUENCE_DOMAIN:-${ATLASSIAN_SITE:-}}"
+    email="${CONFLUENCE_EMAIL:-${ATLASSIAN_EMAIL:-}}"
+    token="${CONFLUENCE_API_TOKEN:-${ATLASSIAN_API_TOKEN:-}}"
+  fi
 
   p6_env_export "P6_DFZ_PROFILE_CONFLUENCE" "$profile"
 
