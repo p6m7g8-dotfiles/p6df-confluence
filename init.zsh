@@ -1,0 +1,97 @@
+# shellcheck shell=bash
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::deps()
+#
+#>
+######################################################################
+p6df::modules::confluence::deps() {
+  ModuleDeps=(
+    p6m7g8-dotfiles/p6df-js
+  )
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::langs()
+#
+#>
+######################################################################
+p6df::modules::confluence::langs() {
+
+  p6_js_npm_global_install "confluence-cli"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::aliases::init()
+#
+#>
+######################################################################
+p6df::modules::confluence::aliases::init() {
+
+  p6_alias "ccli" "confluence"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::profile::on(profile, site, email, token)
+#
+#  Args:
+#	profile -
+#	site -
+#	email -
+#	token -
+#
+#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
+#>
+######################################################################
+p6df::modules::confluence::profile::on() {
+  local profile="$1"
+  local site="$2"
+  local email="$3"
+  local token="$4"
+
+  p6_env_export "P6_DFZ_PROFILE_CONFLUENCE" "$profile"
+
+  p6_env_export "ATLASSIAN_SITE" "$site"
+  p6_env_export "ATLASSIAN_EMAIL" "$email"
+  p6_env_export "ATLASSIAN_API_TOKEN" "$token"
+
+  p6_env_export "CONFLUENCE_DOMAIN" "$site"
+  p6_env_export "CONFLUENCE_EMAIL" "$email"
+  p6_env_export "CONFLUENCE_API_TOKEN" "$token"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::profile::off()
+#
+#  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
+#>
+######################################################################
+p6df::modules::confluence::profile::off() {
+
+  p6_env_export_un P6_DFZ_PROFILE_CONFLUENCE
+
+  p6_env_export_un ATLASSIAN_SITE
+  p6_env_export_un ATLASSIAN_EMAIL
+  p6_env_export_un ATLASSIAN_API_TOKEN
+
+  p6_env_export_un CONFLUENCE_DOMAIN
+  p6_env_export_un CONFLUENCE_EMAIL
+  p6_env_export_un CONFLUENCE_API_TOKEN
+
+  p6_return_void
+}
