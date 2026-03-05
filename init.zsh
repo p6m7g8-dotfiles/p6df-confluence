@@ -102,13 +102,19 @@ p6df::modules::confluence::profile::on() {
     token="${CONFLUENCE_API_TOKEN:-${ATLASSIAN_API_TOKEN:-}}"
   fi
 
+  # confluence-cli expects a bare host for domain values.
+  local domain="$site"
+  domain="${domain#http://}"
+  domain="${domain#https://}"
+  domain="${domain%%/*}"
+
   p6_env_export "P6_DFZ_PROFILE_CONFLUENCE" "$profile"
 
   p6_env_export "ATLASSIAN_SITE" "$site"
   p6_env_export "ATLASSIAN_EMAIL" "$email"
   p6_env_export "ATLASSIAN_API_TOKEN" "$token"
 
-  p6_env_export "CONFLUENCE_DOMAIN" "$site"
+  p6_env_export "CONFLUENCE_DOMAIN" "$domain"
   p6_env_export "CONFLUENCE_EMAIL" "$email"
   p6_env_export "CONFLUENCE_API_TOKEN" "$token"
 
