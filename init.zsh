@@ -153,7 +153,7 @@ p6df::modules::confluence::profile::off() {
 ######################################################################
 p6df::modules::confluence::mcp() {
 
-  p6_js_npm_global_install "confluence-mcp-server"
+  p6df::core::homebrew::cli::brew::install mcp-atlassian
 
   p6_return_void
 }
