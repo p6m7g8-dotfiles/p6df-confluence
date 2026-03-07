@@ -77,13 +77,13 @@ p6df::modules::confluence::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::confluence::profile::on(profile, env_or_site, [email], [token])
+# Function: p6df::modules::confluence::profile::on(profile, env_or_site, [email=], [token=])
 #
 #  Args:
 #	profile -
 #	env_or_site -
-#	OPTIONAL email -
-#	OPTIONAL token -
+#	OPTIONAL email - []
+#	OPTIONAL token - []
 #
 #  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
 #>
@@ -140,6 +140,20 @@ p6df::modules::confluence::profile::off() {
   p6_env_export_un CONFLUENCE_DOMAIN
   p6_env_export_un CONFLUENCE_EMAIL
   p6_env_export_un CONFLUENCE_API_TOKEN
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::mcp()
+#
+#>
+######################################################################
+p6df::modules::confluence::mcp() {
+
+  p6_js_npm_global_install "@modelcontextprotocol/server-atlassian"
 
   p6_return_void
 }
