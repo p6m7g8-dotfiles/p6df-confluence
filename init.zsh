@@ -153,7 +153,7 @@ p6df::modules::confluence::profile::off() {
 ######################################################################
 p6df::modules::confluence::mcp() {
 
-  p6_js_npm_global_install "@modelcontextprotocol/server-atlassian"
+  p6_js_npm_global_install "confluence-mcp-server"
 
   p6_return_void
 }

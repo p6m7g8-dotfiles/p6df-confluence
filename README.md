@@ -18,8 +18,9 @@
 
 ## Summary
 
-p6df module for Confluence: Atlassian profile switching, CLI tools, and MCP server
-(`@modelcontextprotocol/server-atlassian`) for AI-driven wiki management.
+p6df module for Confluence: CLI tools (`confluence-cli`), profile switching
+(`CONF_USERNAME`, `CONF_PASSWORD`, `CONF_URL`), and MCP server
+(`confluence-mcp-server`) for AI-driven wiki page management.
 
 ## Contributing
 
