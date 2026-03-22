@@ -9,6 +9,7 @@
 p6df::modules::confluence::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-js
+    langpingxue/atlassian-skills
   )
 }
 
