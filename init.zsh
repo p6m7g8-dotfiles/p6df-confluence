@@ -78,30 +78,24 @@ p6df::modules::confluence::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::confluence::profile::on(profile, env_or_site, [email=], [token=])
+# Function: p6df::modules::confluence::profile::on(profile, code)
 #
 #  Args:
 #	profile -
-#	env_or_site -
-#	OPTIONAL email - []
-#	OPTIONAL token - []
+#	code -
 #
 #  Environment:	 ATLASSIAN_API_TOKEN ATLASSIAN_EMAIL ATLASSIAN_SITE CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL P6_DFZ_PROFILE_CONFLUENCE
 #>
 ######################################################################
 p6df::modules::confluence::profile::on() {
   local profile="$1"
-  local env_or_site="$2"
-  local email="${3:-}"
-  local token="${4:-}"
+  local code="$2"
 
-  local site="$env_or_site"
-  if [ "$#" -eq 2 ]; then
-    p6_run_code "$env_or_site"
-    site="${CONFLUENCE_DOMAIN:-${ATLASSIAN_SITE:-}}"
-    email="${CONFLUENCE_EMAIL:-${ATLASSIAN_EMAIL:-}}"
-    token="${CONFLUENCE_API_TOKEN:-${ATLASSIAN_API_TOKEN:-}}"
-  fi
+  p6_run_code "$code"
+
+  local site="${CONFLUENCE_DOMAIN:-${ATLASSIAN_SITE:-}}"
+  local email="${CONFLUENCE_EMAIL:-${ATLASSIAN_EMAIL:-}}"
+  local token="${CONFLUENCE_API_TOKEN:-${ATLASSIAN_API_TOKEN:-}}"
 
   # confluence-cli expects a bare host for domain values.
   local domain="$site"
