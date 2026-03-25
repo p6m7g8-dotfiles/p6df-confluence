@@ -16,6 +16,21 @@ p6df::modules::confluence::deps() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::confluence::home::symlinks()
+#
+#  Environment:	 HOME P6_DFZ_SRC_DIR
+#>
+######################################################################
+p6df::modules::confluence::home::symlinks() {
+
+  p6_file_symlink "$P6_DFZ_SRC_DIR/langpingxue/atlassian-skills"  "$HOME/.claude/skills/atlassian-skills"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: p6df::modules::confluence::langs()
 #
 #>
