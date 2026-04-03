@@ -63,12 +63,12 @@ p6df::modules::confluence::mcp() {
 ######################################################################
 #<
 #
-# Function: words confluence $CONFLUENCE_API_TOKEN = p6df::modules::confluence::profile::mod()
+# Function: words confluence $CONFLUENCE_DOMAIN $CONFLUENCE_EMAIL $CONFLUENCE_API_TOKEN = p6df::modules::confluence::profile::mod()
 #
 #  Returns:
-#	words - confluence $CONFLUENCE_API_TOKEN
+#	words - confluence $CONFLUENCE_DOMAIN $CONFLUENCE_EMAIL $CONFLUENCE_API_TOKEN
 #
-#  Environment:	 CONFLUENCE_API_TOKEN
+#  Environment:	 CONFLUENCE_DOMAIN CONFLUENCE_EMAIL CONFLUENCE_API_TOKEN
 #>
 ######################################################################
 p6df::modules::confluence::profile::mod() {
