@@ -73,5 +73,5 @@ p6df::modules::confluence::mcp() {
 ######################################################################
 p6df::modules::confluence::profile::mod() {
 
-  p6_return_words 'confluence' "$"
+  p6_return_words 'confluence' '$CONFLUENCE_DOMAIN' '$CONFLUENCE_EMAIL' '$CONFLUENCE_API_TOKEN'
 }
