@@ -16,7 +16,11 @@ p6df::modules::confluence::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::confluence::aliases::init()
+# Function: p6df::modules::confluence::aliases::init(_module, _dir)
+#
+#  Args:
+#	_module -
+#	_dir -
 #
 #>
 ######################################################################
@@ -63,12 +67,12 @@ p6df::modules::confluence::mcp() {
 ######################################################################
 #<
 #
-# Function: words confluence $CONFLUENCE_DOMAIN $CONFLUENCE_EMAIL $CONFLUENCE_API_TOKEN = p6df::modules::confluence::profile::mod()
+# Function: words confluence = p6df::modules::confluence::profile::mod()
 #
 #  Returns:
-#	words - confluence $CONFLUENCE_DOMAIN $CONFLUENCE_EMAIL $CONFLUENCE_API_TOKEN
+#	words - confluence
 #
-#  Environment:	 CONFLUENCE_DOMAIN CONFLUENCE_EMAIL CONFLUENCE_API_TOKEN
+#  Environment:	 CONFLUENCE_API_TOKEN CONFLUENCE_DOMAIN CONFLUENCE_EMAIL
 #>
 ######################################################################
 p6df::modules::confluence::profile::mod() {
