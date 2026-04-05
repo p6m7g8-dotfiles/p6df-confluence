@@ -1,11 +1,5 @@
 # shellcheck shell=bash
 ######################################################################
-#<
-#
-# Function: p6df::modules::confluence::deps()
-#
-#>
-######################################################################
 p6df::modules::confluence::deps() {
   ModuleDeps=(
     p6m7g8-dotfiles/p6df-atlassian
@@ -13,26 +7,6 @@ p6df::modules::confluence::deps() {
   )
 }
 
-######################################################################
-#<
-#
-# Function: p6df::modules::confluence::langs()
-#
-#>
-######################################################################
-p6df::modules::confluence::langs() {
-
-  p6_js_npm_global_install "confluence-cli"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
-# Function: p6df::modules::confluence::aliases::init()
-#
-#>
 ######################################################################
 p6df::modules::confluence::aliases::init() {
 
@@ -44,11 +18,13 @@ p6df::modules::confluence::aliases::init() {
 }
 
 ######################################################################
-#<
-#
-# Function: p6df::modules::confluence::mcp()
-#
-#>
+p6df::modules::confluence::langs() {
+
+  p6_js_npm_global_install "confluence-cli"
+
+  p6_return_void
+}
+
 ######################################################################
 p6df::modules::confluence::mcp() {
 
@@ -61,6 +37,35 @@ p6df::modules::confluence::mcp() {
 }
 
 ######################################################################
+p6df::modules::confluence::profile::mod() {
+
+  p6_return_words 'confluence' '$CONFLUENCE_DOMAIN' '$CONFLUENCE_EMAIL' '$CONFLUENCE_API_TOKEN'
+}
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::deps()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::langs()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::aliases::init()
+#
+#>
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::mcp()
+#
+#>
+######################################################################
 #<
 #
 # Function: words confluence $CONFLUENCE_DOMAIN $CONFLUENCE_EMAIL $CONFLUENCE_API_TOKEN = p6df::modules::confluence::profile::mod()
@@ -70,8 +75,3 @@ p6df::modules::confluence::mcp() {
 #
 #  Environment:	 CONFLUENCE_DOMAIN CONFLUENCE_EMAIL CONFLUENCE_API_TOKEN
 #>
-######################################################################
-p6df::modules::confluence::profile::mod() {
-
-  p6_return_words 'confluence' '$CONFLUENCE_DOMAIN' '$CONFLUENCE_EMAIL' '$CONFLUENCE_API_TOKEN'
-}
