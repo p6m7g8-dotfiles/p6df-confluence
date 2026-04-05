@@ -16,20 +16,6 @@ p6df::modules::confluence::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::confluence::langs()
-#
-#>
-######################################################################
-p6df::modules::confluence::langs() {
-
-  p6_js_npm_global_install "confluence-cli"
-
-  p6_return_void
-}
-
-######################################################################
-#<
-#
 # Function: p6df::modules::confluence::aliases::init()
 #
 #>
@@ -39,6 +25,20 @@ p6df::modules::confluence::aliases::init() {
   local _module="$1"
   local _dir="$2"
   p6_alias "ccli" "confluence"
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
+# Function: p6df::modules::confluence::langs()
+#
+#>
+######################################################################
+p6df::modules::confluence::langs() {
+
+  p6_js_npm_global_install "confluence-cli"
 
   p6_return_void
 }
