@@ -18,9 +18,7 @@
 
 ## Summary
 
-p6df module for Confluence: CLI tools (`confluence-cli`), profile switching
-(`CONF_USERNAME`, `CONF_PASSWORD`, `CONF_URL`), and MCP server
-(`confluence-mcp-server` via npm) for AI-driven wiki page management.
+TODO: Add a short summary of this module.
 
 ## Contributing
 
@@ -42,18 +40,14 @@ p6df module for Confluence: CLI tools (`confluence-cli`), profile switching
 
 ##### p6df-confluence/init.zsh
 
-- `p6df::modules::confluence::aliases::init()`
+- `p6df::modules::confluence::aliases::init(_module, _dir)`
+  - Args:
+    - _module
+    - _dir
 - `p6df::modules::confluence::deps()`
 - `p6df::modules::confluence::langs()`
 - `p6df::modules::confluence::mcp()`
-- `p6df::modules::confluence::profile::off()`
-- `p6df::modules::confluence::profile::on(profile, env_or_site, [email=], [token=])`
-  - Args:
-    - profile
-    - env_or_site
-    - OPTIONAL email - []
-    - OPTIONAL token - []
-- `str str = p6df::modules::confluence::prompt::mod()`
+- `words confluence = p6df::modules::confluence::profile::mod()`
 
 ## Hierarchy
 
